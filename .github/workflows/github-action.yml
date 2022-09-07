@@ -1,5 +1,7 @@
 name: DC_CI/CD
 on: [push]
+env:
+  msk-ci-cd: Release
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
