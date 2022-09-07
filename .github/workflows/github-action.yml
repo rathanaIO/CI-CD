@@ -1,7 +1,5 @@
 name: DC_CI/CD
 on: [push]
-env:
-  msk-ci-cd: Release
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -16,4 +14,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ NAME_ME }}"
+      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ env.NAME_ME }} and age-${{ env.AGE }}"
