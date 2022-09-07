@@ -1,7 +1,9 @@
 name: DC_CI/CD
 on: [push]
+env:
+  msk-ci-cd: Release
 jobs:
-  Explore-GitHub-Actions:
+  DC-service-on-EC2:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -14,4 +16,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ job.NAME_ME }}"
+      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ github.sha }}"
+      env:
+          IMAGE_TAG: ${{ github.sha }}
