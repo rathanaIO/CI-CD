@@ -14,4 +14,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ env.NAME_ME }} and age-${{ github.env }}"
+      - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ env.NAME_ME }} and age-${{ secrets.AGE }}"
