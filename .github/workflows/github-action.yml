@@ -17,5 +17,3 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}. with ${{ NAME_ME }}"
-      - env:
-          IMAGE_TAG: ${{ github.sha }}
