@@ -11,4 +11,4 @@ jobs:
       - name: Build docker image 
         run: docker build -t dc-app .
       - name: Run docker compose
-        run: docker-compose up -d
+        run: docker-compose up
