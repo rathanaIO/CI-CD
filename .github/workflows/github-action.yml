@@ -6,8 +6,7 @@ jobs:
   DC-service-on-EC2:
     runs-on: ubuntu-latest
     steps:
-      runs :
-        using: 'docker'
-        image: 'Dockerfile'
-        - run: docker build -t dc_app .
-      
+      - name: check out source code
+        uses: actions/checkout@v2
+      - name: Run docker compose
+        run: docker-compose up -d
