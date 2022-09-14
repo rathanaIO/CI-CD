@@ -23,7 +23,8 @@ jobs:
         run: |
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
-      - name: curl http://${{ steps.ip.outputs.ipv4 }}
+      - name: get api
+        run: curl http://${{ steps.ip.outputs.ipv4 }}
       - name: Get public ip address
         run: curl https://ipinfo.io/ip
       # - name: Run docker compose
