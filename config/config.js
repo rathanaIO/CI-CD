@@ -7,6 +7,7 @@ module.exports= {
         password: process.env.POSTGRES_PASSWORD || 'ratana',
         database: process.env.POSTGRES_DB || 'ratana',
         host: process.env.POSTGRES_HOSTNAME || '192.168.0.61',
+        port: process.env.POSTGRES_PORT || 5555,
         dialect: 'postgres',
         seederStorage: 'sequelize'
     },
