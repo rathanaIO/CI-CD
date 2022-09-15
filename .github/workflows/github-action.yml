@@ -2,6 +2,8 @@ name: DC_CI/CD
 on: [push]
 env:
   msk-ci-cd: Release
+
+
 jobs:
   DC-service-on-Github-runner:
     runs-on: ubuntu-latest
@@ -26,6 +28,9 @@ jobs:
         run: |
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
+
+
+  
   DC-service-on-EC2:
     runs-on: self-hosted
     steps:
