@@ -25,10 +25,6 @@ jobs:
         run: |
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
-      - name: get api
-        run: curl http://${{ steps.ip.outputs.ipv4 }}:3000
-      - name: Get public ip address
-        run: curl https://ipinfo.io/ip
   DC-service-on-EC2:
     runs-on: self-hosted
     steps:
@@ -51,9 +47,5 @@ jobs:
         run: |
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
-      - name: get api
-        run: curl http://${{ steps.ip.outputs.ipv4 }}:3000
-      - name: Get public ip address
-        run: curl https://ipinfo.io/ip
       # - name: Run docker compose
       #   run: docker-compose up
