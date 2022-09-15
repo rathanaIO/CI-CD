@@ -45,7 +45,7 @@ const sessionAuthenticationMiddleware = (req, res,next) => {
   if (WHITE_LIST_URL.indexOf(req.originalUrl) >= 0) {
   return next();
   }
-  return User.findOne(
+  return User.findOne({
       attributes: ['id'],
       where: { id: req.user.id },
       include: [{
