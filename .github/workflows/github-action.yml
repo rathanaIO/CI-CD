@@ -3,11 +3,12 @@ on: [push]
 env:
   msk-ci-cd: Release
 jobs:
-  DC-service-on-EC2:
+  DC-service-on-Github-runner:
     runs-on: ubuntu-latest
     steps:
       - name: check out source code
         uses: actions/checkout@v2
+
       - name: Build docker image
         run: sudo docker build -t dc-app .
       - name: List docker image 
@@ -16,6 +17,33 @@ jobs:
         run: sudo docker-compose up -d
       - name : watch docker process 
         run: sudo docker ps
+      # Display Public Ip
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+      - name: Print Public IP
+        run: |
+          echo ${{ steps.ip.outputs.ipv4 }}
+          echo ${{ steps.ip.outputs.ipv6 }}
+      - name: get api
+        run: curl http://${{ steps.ip.outputs.ipv4 }}:3000
+      - name: Get public ip address
+        run: curl https://ipinfo.io/ip
+  DC-service-on-EC2:
+    runs-on: self-hosted
+    steps:
+      - name: check out source code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: sudo docker build -t dc-app .
+      - name: List docker image 
+        run: sudo docker image ls
+      - name: Run docker container
+        run: sudo docker-compose up -d
+      - name : watch docker process 
+        run: sudo docker ps
+      # Display Public Ip
       - name: Public IP
         id: ip
         uses: haythem/public-ip@v1.2
